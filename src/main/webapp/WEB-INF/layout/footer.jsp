@@ -1,3 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
-&copy; Felipe Moura
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted">&copy; Felipe Moura</p>
+  </div>
+</footer>
