@@ -6,41 +6,34 @@
 	<definition name="common" template="/WEB-INF/layout/classic.jsp">
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
 	</definition>
-
 	<definition name="index" extends="common">
 		<put-attribute name="title" value="Java Blog Aggregator" />
 		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
-		<put-attribute name="current" value="index" />
+		<put-attribute name="current_page" value="index" />
 	</definition>
-
 	<definition name="users" extends="common">
 		<put-attribute name="title" value="Users" />
 		<put-attribute name="body" value="/WEB-INF/jsp/users.jsp" />
-		<put-attribute name="current" value="users" />
+		<put-attribute name="current_page" value="users" />
 	</definition>
-
-	<definition name="user-detail" extends="common">
+	<definition name="user-details" extends="common">
 		<put-attribute name="title" value="User detail" />
-		<put-attribute name="body" value="/WEB-INF/jsp/user-detail.jsp" />
-		<put-attribute name="current" value="users" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user-details.jsp" />
+		<put-attribute name="current_page" value="user" />
 	</definition>
-
 	<definition name="account" extends="common">
 		<put-attribute name="title" value="User account" />
 		<put-attribute name="body" value="/WEB-INF/jsp/user-account.jsp" />
-		<put-attribute name="current" value="account" />
+		<put-attribute name="current_page" value="account" />
 	</definition>
-
 	<definition name="user-register" extends="common">
 		<put-attribute name="title" value="User registration" />
 		<put-attribute name="body" value="/WEB-INF/jsp/user-register.jsp" />
-		<put-attribute name="current" value="register" />
+		<put-attribute name="current_page" value="register" />
 	</definition>
-
 	<definition name="login" extends="common">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
-		<put-attribute name="current" value="login" />
+		<put-attribute name="current_page" value="login" />
 	</definition>
-
 </tiles-definitions>
