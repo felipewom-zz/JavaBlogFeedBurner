@@ -1,4 +1,4 @@
-h1>Java Blog Aggregator</h1>
+<h1>Java Blog Aggregator</h1>
 
 <p>Project Java Blog Aggregator uses this system to aggregate latest news from Java world.</p>
 
