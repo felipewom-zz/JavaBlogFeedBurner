@@ -19,28 +19,9 @@ To deploy WAR to Heroku see this article: <a href="https://devcenter.heroku.com/
 You can use this user to login (name / password): <code>admin / admin</code>
 </p>
 
-<h2>To develop JBA from scratch:</h2>
-
-<p>
-Because I recorded this project creation from scratch, you can learn from it:
-</p>
-
 <ul>
 	<li>
-		<a href="https://www.youtube.com/playlist?list=PLmcxdcWPhFqMq2BctGktOcIJKUw23wJeh" target="_blank" title="Java Blog Aggregator on YouTube">YouTube playlist</a>
-	</li>
-    <li>
-		<a href="http://www.javavids.com/tutorial/spring-web-application-tutorial-java-blogs-aggregator.html" target="_blank" title="Java Blog Aggregator on JavaVids">On JavaVids.com</a> (with code snippets)
-	</li>
-</ul>
-
-<h2>Related projects:</h2>
-
-<ul>
-	<li>
-		<a href="http://www.javavids.com" target="_blank" title="Java video tutorials">Java video tutorials</a> (free online tutorials)
-	</li>
-    <li>
-		<a href="http://www.java-skoleni.cz" target="_blank" title="Java školení">Java školení</a> (in Czech)
+		<a href="http://www.facebook.com/felipewom" target="_blank" title="Page on Facebook">Felipe Moura</a>
+		
 	</li>
 </ul>
