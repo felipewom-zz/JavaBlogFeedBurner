@@ -22,57 +22,43 @@ import br.com.felipe.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private BlogService blogService;
-	
+
 	@ModelAttribute("user")
 	public User constructUser() {
 		return new User();
 	}
-	
+
 	@ModelAttribute("blog")
 	public Blog constructBlogs() {
 		return new Blog();
 	}
-	
-	@RequestMapping("/users")
-	public String users(Model model) {
-		model.addAttribute("users", userService.findAll());
-		return "users";
-	}
-	
-	@RequestMapping("/user/{id}")
-	public String details(Model model, @PathVariable int id) {
-		model.addAttribute("user", userService.findOneWithBlogs(id));
-		return "user-details";
-	}
-	
-	@RequestMapping("/register")
-	public String showRegister() {
-		return "user-register";
-	}
-	
-	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String doRegister(@ModelAttribute("user") User user) {
-		userService.save(user);
-		return "redirect:/register.html?success=true";
-	}
-	
+
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal) {
-		String name = principal.getName();
-		model.addAttribute("user", userService.findOneWithBlogs(name));
-		return "user-details";
+		String username = principal.getName();
+		model.addAttribute("user", userService.findOneWithBlogs(username));
+		return "account"; //in general.xml -> definition name="account"
 	}
-	
-	@RequestMapping(value="/account",method=RequestMethod.POST)
-	public String doAddBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal) {
+
+	@RequestMapping(value = "/account", method = RequestMethod.POST)
+	public String doAddBlog(Model model,
+			@Valid @ModelAttribute("blog") Blog blog, BindingResult result,
+			Principal principal) {
 		if (result.hasErrors()) {
 			return account(model, principal);
 		}
-		String name = principal.getName();
-		blogService.save(blog, name);
+		String username = principal.getName();
+		blogService.save(blog, username);
+		return "redirect:/account.html";
+	}
+
+	@RequestMapping("/blog/remove/{id}")
+	public String removeBlog(@PathVariable int id) {
+		Blog blog = blogService.findOne(id);
+		blogService.delete(blog);
 		return "redirect:/account.html";
 	}
 }

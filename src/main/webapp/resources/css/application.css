@@ -39,6 +39,23 @@ body {
   padding-left: 15px;
 }
 
+.warning{
+	color: red !important;
+}
+/* Table treat break word when word is longer than column */
+table{
+	table-layout: fixed;
+	width: 100%;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+td{
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space:nowrap;
+}
+
 code {
   font-size: 80%;
 }

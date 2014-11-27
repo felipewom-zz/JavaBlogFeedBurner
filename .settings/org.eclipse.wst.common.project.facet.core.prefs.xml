@@ -14,4 +14,9 @@
       <attribute name="provider-id" value="jpa-no-op-library-provider"/>
     </node>
   </facet>
+  <facet id="jpt.jaxb">
+    <node name="classgen">
+      <attribute name="package" value="br.com.felipe.rss"/>
+    </node>
+  </facet>
 </root>

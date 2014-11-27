@@ -15,6 +15,13 @@
 							<p>Username: <c:out value="${user.username}"/></p>
 							<p>Email: <c:out value="${user.email}"/></p>
 						</div>
+						<div class="col-sm-2">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary btn-lg"
+								data-toggle="modal" data-target="#myModal">
+								<span class="glyphicon glyphicon-list-alt"></span> New Blog
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -83,6 +90,43 @@
 		</div>
 	</div>
 </div>
+<!-- Modal Create Blog -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">New Blog</h4>
+			</div>
+			<div class="modal-body">
+				<form:form commandName="blog" cssClass="form-horizontal newBlogForm">
+					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label">Name:</label>
+						<div class="col-sm-4">
+							<form:input path="name" cssClass="form-control" />
+							<form:errors path="name"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="url" class="col-sm-2 control-label">URL:</label>
+						<div class="col-sm-4">
+							<form:input path="url" cssClass="form-control" />
+							<form:errors path="url"/>
+						</div>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" value="Save" />
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form:form>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- Modal Delete -->
 <div class="modal fade" id="myModalRemove" tabindex="-1" role="dialog"
 	aria-labelledby="myModalRemoveLabel" aria-hidden="true">
@@ -106,10 +150,31 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.nav-tabs a:first').tab('show');
+
 		$(".triggerRemove").click(function(e){
 			e.preventDefault();
 			$("#myModalRemove .removeBtn").attr("href", $(this).attr("href"));
 			$("#myModalRemove").modal();
 		});			
+
+		$(".newBlogForm").validate(
+				{
+					rules:{
+						name: {	required: true,
+								minlength: 4
+								},
+						url: {	required: true,
+									url: true
+									},
+						},
+						highlight: function(element){
+							$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+						},
+						unhighlight: function(element){
+							$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+						}
+	
+					}
+		);
 	});
 </script>

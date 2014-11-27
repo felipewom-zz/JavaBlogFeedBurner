@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Item {
@@ -15,9 +16,11 @@ public class Item {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
+	
+	@Size(min=4, message="Must be at least 4 character!")
 	private String title;
-
+	
+	@Size(min=4, message="Must be at least 4 character!")
 	private String description;
 
 	@Column(name = "published_date")

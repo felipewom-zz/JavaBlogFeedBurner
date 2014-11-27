@@ -2,12 +2,19 @@ package br.com.felipe.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
+import br.com.felipe.annotations.UniqueEmail;
+import br.com.felipe.annotations.UniqueUsername;
 
 @Entity
 public class User {
@@ -15,17 +22,30 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
+	
+	@Size(min=4, message="Must be at least 4 character!")
+	@UniqueUsername(message = "Suche username already exists!")
 	private String username;
 	
+	@Size(min=4, message="Must be at least 4 character!")
 	private String name;
-
+	
+	@Email(message="Invalid email address!")
+	@UniqueEmail(message = "Such email already exists!")
 	private String email;
-
+	
+	@Size(min=6, message="Must be at least 6 character!")
 	private String password;
-	
+
 	private boolean enabled;
-	
+
+	@ManyToMany
+	@JoinTable
+	private List<Role> roles;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<Blog> blogs;
+
 	public String getUsername() {
 		return username;
 	}
@@ -41,13 +61,6 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-	@ManyToMany
-	@JoinTable
-	private List<Role> roles;
-
-	@OneToMany(mappedBy = "user")
-	private List<Blog> blogs;
 
 	public List<Blog> getBlogs() {
 		return blogs;

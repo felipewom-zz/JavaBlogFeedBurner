@@ -44,6 +44,14 @@ public class UserService {
 		return userRepository.findOne(id);
 	}
 	
+	public User findOne(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
+	public User findOneByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 	@Transactional
 	public User findOneWithBlogs(int id) {
 		User user = findOne(id);
@@ -66,8 +74,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 
-	public Object findOneWithBlogs(String username) {
+	public User findOneWithBlogs(String username) {
 		User user = userRepository.findByUsername(username);
 		return findOneWithBlogs(user.getId());
 	}
+
+	public void delete(int id) {
+		userRepository.delete(id);
+	}
+
 }
