@@ -1,7 +1,7 @@
 <h1>Java Blog Aggregator</h1>
 
 <p>Project Java Blog Aggregator uses this system to aggregate latest news from Java world.</p>
-
+<p>Based on Spring with Hibernate</p>
 <h2>To run in development mode (using embedded HSQL database):</h2>
 
 <p>
