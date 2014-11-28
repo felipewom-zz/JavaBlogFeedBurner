@@ -3,8 +3,11 @@ package br.com.felipe.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javassist.bytecode.stackmap.TypeData.ClassName;
+
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
@@ -73,7 +76,7 @@ public class UserService {
 		user.setRoles(roles);	
 		userRepository.save(user);
 	}
-
+	
 	public User findOneWithBlogs(String username) {
 		User user = userRepository.findByUsername(username);
 		return findOneWithBlogs(user.getId());

@@ -3,6 +3,7 @@ package br.com.felipe.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +25,7 @@ public class User {
 	private Integer id;
 	
 	@Size(min=4, message="Must be at least 4 character!")
+	@Column(unique = true)
 	@UniqueUsername(message = "Suche username already exists!")
 	private String username;
 	

@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import br.com.felipe.service.UserService;
 
 @Controller
 public class UserController {
+	final static Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
 
@@ -38,8 +40,19 @@ public class UserController {
 
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal) {
-		String username = principal.getName();
-		model.addAttribute("user", userService.findOneWithBlogs(username));
+		//logs a debug message
+		if(logger.isDebugEnabled()){
+		    logger.debug("This is debug");
+		}
+		//logs an error message with parameter
+		logger.info("This is error : " + principal.getName());
+		try {
+			String username = principal.getName();
+			model.addAttribute("user", userService.findOneWithBlogs(username));
+		} catch (Exception e) {
+			//logs an exception thrown from somewhere
+			logger.error("This is error", e);
+		}
 		return "account"; //in general.xml -> definition name="account"
 	}
 

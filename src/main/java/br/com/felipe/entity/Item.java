@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Item {
@@ -17,15 +19,23 @@ public class Item {
 	@GeneratedValue
 	private Integer id;
 	
-	@Size(min=4, message="Must be at least 4 character!")
+	@Column(length = 1000)
 	private String title;
 	
-	@Size(min=4, message="Must be at least 4 character!")
+	@Lob
+	@Type(type = "org.hibernate.type.StringClobType")
+	@Column(length = Integer.MAX_VALUE)
 	private String description;
 
 	@Column(name = "published_date")
 	private Date publishedDate;
 
+	@ManyToOne
+	@JoinColumn(name = "blog_id")
+	private Blog blog;
+	
+	private String link;
+	
 	public Blog getBlog() {
 		return blog;
 	}
@@ -33,12 +43,6 @@ public class Item {
 	public void setBlog(Blog blog) {
 		this.blog = blog;
 	}
-
-	private String link;
-	
-	@ManyToOne
-	@JoinColumn(name = "blog_id")
-	private Blog blog;
 
 	public Integer getId() {
 		return id;

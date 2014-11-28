@@ -9,6 +9,7 @@
 	<http use-expressions="true">
 		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/account/**" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login.html"/>
 		<logout logout-url="/logout"/>
@@ -24,4 +25,12 @@
 				users-by-username-query="SELECT username, password, enabled FROM user WHERE username = ?"/>
 		</authentication-provider>
 	</authentication-manager>
+<!-- 	<security:filter-chain pattern="/account*" filters=" -->
+<!--           securityContextPersistenceFilter, -->
+<!--           logoutFilter, -->
+<!--           usernamePasswordAuthenticationFilter, -->
+<!--           rememberMeAuthenticationFilter, -->
+<!--           anonymousAuthenticationFilter, -->
+<!--           exceptionTranslationFilter, -->
+<!--           filterSecurityInterceptor"/> -->
 </beans:beans>

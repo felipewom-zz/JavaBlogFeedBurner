@@ -18,26 +18,26 @@
 		<tbody>
 			<c:forEach items="${users}" var="user">
 				<tr>
-					<td class="center">
+					<td class="center single-lined">
 						${user.id}
 					</td>
-					<td>
+					<td class="single-lined" title="<c:out value="${user.name}"/>">
 						<a href="<spring:url value="/users/${user.id}.html" />">
 							<span class="glyphicon glyphicon-user" aria-hidden="true">
 							</span> <c:out value="${user.name}"/>
 						</a>
 					</td>
-					<td class="text-muted center column" style="vertical-align: middle;">
+					<td title="<c:out value="${user.username}"/>" class="text-muted center single-lined" style="vertical-align: middle;">
 						<c:out value="${user.username}"/></td>
-					<td class="text-muted center" style="vertical-align: middle;">
+					<td title="<c:out value="${user.password}"/>" class="text-muted center single-lined" style="vertical-align: middle;">
 						<c:out value="${user.password}"/></td>
-					<td class="text-muted"><a
+					<td class="text-muted single-lined" title="<c:out value="${user.email}" />"><a 
 						href="mailto:${user.email}?subject=JavaBlog
 							&body=This is just a test from Javablog! ">
 							<span class="glyphicon glyphicon-inbox" aria-hidden="true">
 						</span> <c:out value="${user.email}" />
 					</a></td>
-					<td class="center"><a
+					<td class="center single-lined"><a
 						href="<spring:url value="/user/${user.id}.html" />"> <span
 							class="glyphicon glyphicon-edit" aria-hidden="true"> </span>
 					</a> <a href="<spring:url value="/user/remove/${user.id}.html"/>">

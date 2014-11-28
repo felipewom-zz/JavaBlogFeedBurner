@@ -50,10 +50,38 @@ table{
 	word-break:break-all;
 }
 
-td{
+.single-lined{
 	text-overflow: ellipsis; 
 	overflow: hidden; 
 	white-space:nowrap;
+}
+
+#wrapperColumn {
+	 width: 100%;
+	 margin: 0 auto;
+	 overflow: hidden;
+}
+
+.img_class {
+	 height:auto;
+	 width:auto;
+	 max-width:100%;
+}
+
+/*If you have a div inside your wrapper then you would need this*/
+
+#wrapperColumn .contained_div {
+	 width: auto;
+	 display: inline-block:
+	 margin: 0;
+}
+
+/*If you want to stack stuffs one after another in a column then use this div */
+.column {
+	margin: 0px;
+	overflow: auto;
+	float: inherit;
+	display: inline;
 }
 
 code {

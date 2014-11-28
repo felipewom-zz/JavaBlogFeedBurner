@@ -15,7 +15,7 @@
 							<p>Username: <c:out value="${user.username}"/></p>
 							<p>Email: <c:out value="${user.email}"/></p>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-offset-10">
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-primary btn-lg"
 								data-toggle="modal" data-target="#myModal">
@@ -49,7 +49,7 @@
 													<c:out value="${blog.name}"></c:out> </a>
 											</h2>
 										</div>
-										<div class="col-sm-2">
+										<div class="col-sm-offset-11">
 											<a class="btn btn-danger triggerRemove"
 												href='<spring:url value="/blog/remove/${blog.id}.html"></spring:url>'>
 												<span class="glyphicon glyphicon-trash"></span>
@@ -62,22 +62,36 @@
 								<table class="table table-bordered table-hover table-striped">
 									<thead>
 										<tr>
-											<th class="center">ID</th>
-											<th class="center">Title</th>
-											<th class="center">Link</th>
-											<th class="center">Description</th>
-											<th class="center">Published Date</th>
+											<th class="center">Date</th>
+											<th class="center">Content</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${blog.items}" var="item">
 											<tr>
-												<td class="center">${item.id}</td>
-												<td class="center"><c:out value="${item.title}"/></td>
-												<td class="center"><a
-													href="<spring:url value="${item.link}" />"><c:out value="${item.link}"></c:out></a></td>
-												<td class="center"><c:out value="${item.description}"></c:out></td>
-												<td class="center"><c:out value="${item.publishedDate}"></c:out></td>
+												<td class="center">
+													<c:out value="${item.publishedDate}"></c:out>
+												</td>
+												<td class="center">
+													<div id="wrapperColumn" class="col-sm-12 contained_div">
+														<i class="small pull-left">ID: ${item.id}</i>
+														<p></p>
+														<br>
+														<div title="<c:out value="${item.title}"></c:out>" > 
+															<strong>
+																<a href="<c:out value="${item.link}"></c:out>" target="_blank">
+																	<c:out value="${item.title}"/>
+																</a>
+															</strong>
+														</div>
+														<br>
+														<div class="column img_class">
+															<blockquote cite="${item.link}"> 
+																${item.description}
+															</blockquote>
+														</div>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -160,12 +174,14 @@
 		$(".newBlogForm").validate(
 				{
 					rules:{
-						name: {	required: true,
-								minlength: 4
+						name: {	
+							required: true,
+							minlength: 4
 								},
-						url: {	required: true,
-									url: true
-									},
+						url: {	
+							required: true,
+							url: true
+								},
 						},
 						highlight: function(element){
 							$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
