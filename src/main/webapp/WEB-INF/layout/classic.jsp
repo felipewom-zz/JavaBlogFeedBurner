@@ -48,19 +48,20 @@
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li class="${current_page == 'account' ? 'active' : ''}"><a
-							href='<spring:url value="/account.html" />'>My account</a></li>
+							href='<spring:url value="/account.html" />'>My account</a>
+						</li>
+						<li style="padding-top: 8px">
+						  	<div class="col-xs-offset-2">
+							  	<button id="debugBtn" class="btn alert-warning">
+									<security:authorize access="hasRole('ROLE_ADMIN')">
+										current_page: ${current_page}
+									    | current_user: ${current_user.username}
+									    | role: ${current_user.authorities}  
+									</security:authorize>
+								</button> 
+							</div>
+						</li>
 					</security:authorize>
-					<li style="padding-top: 8px">
-					  	<div class="col-xs-offset-2">
-						  	<i class="btn alert-warning">
-								<security:authorize access="hasRole('ROLE_ADMIN')">
-									current_page: ${current_page}
-								    | current_user: ${current_user.username}
-								    | role: ${current_user.authorities}  
-								</security:authorize>
-							</i> 
-						</div>
-					</li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<security:authorize access="! isAuthenticated()">
@@ -82,5 +83,37 @@
 	<div class="center">
 		<tiles:insertAttribute name="footer" />
 	</div>
+	<!-- Modal DEBUG -->
+	<div class="modal fade" id="myModalDebug" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">DEBUG</h4>
+				</div>
+				<div class="modal-body">
+				  	<div class="text-muted">
+				  		<security:authorize access="hasRole('ROLE_ADMIN')">
+							<p>current_page: ${current_page}</p>
+						    <p>current_user: ${current_user.username}</p>
+						    <p>role: ${current_user.authorities}</p>
+					    </security:authorize>  
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$("#debugBtn").click(function(e){
+		e.preventDefault();
+		$("#myModalDebug").modal();
+	});	
+	</script>
 </body>
 </html>

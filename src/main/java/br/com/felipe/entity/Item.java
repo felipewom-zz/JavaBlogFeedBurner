@@ -34,6 +34,7 @@ public class Item {
 	@JoinColumn(name = "blog_id")
 	private Blog blog;
 	
+	@Column(length = 1000)
 	private String link;
 	
 	public Blog getBlog() {

@@ -85,10 +85,8 @@
 															</strong>
 														</div>
 														<br>
-														<div class="column img_class">
-															<blockquote cite="${item.link}"> 
-																${item.description}
-															</blockquote>
+														<div class="column img_class" >
+															${item.description == '' || item.description == null ? "<i style='width: 100% !important;font-size: 8px'>No content</i>" : item.description}
 														</div>
 													</div>
 												</td>

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -18,25 +19,26 @@ import br.com.felipe.annotations.UniqueEmail;
 import br.com.felipe.annotations.UniqueUsername;
 
 @Entity
+@Table(name = "app_user")//for heroku
 public class User {
 
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
-	@Size(min=4, message="Must be at least 4 character!")
+
+	@Size(min = 4, message = "Must be at least 4 character!")
 	@Column(unique = true)
 	@UniqueUsername(message = "Suche username already exists!")
 	private String username;
-	
-	@Size(min=4, message="Must be at least 4 character!")
+
+	@Size(min = 4, message = "Must be at least 4 character!")
 	private String name;
-	
-	@Email(message="Invalid email address!")
+
+	@Email(message = "Invalid email address!")
 	@UniqueEmail(message = "Such email already exists!")
 	private String email;
-	
-	@Size(min=6, message="Must be at least 6 character!")
+
+	@Size(min = 6, message = "Must be at least 6 character!")
 	private String password;
 
 	private boolean enabled;
