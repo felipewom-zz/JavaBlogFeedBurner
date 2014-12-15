@@ -25,12 +25,4 @@
 				users-by-username-query="SELECT username, password, enabled FROM app_user WHERE username = ?"/>
 		</authentication-provider>
 	</authentication-manager>
-<!-- 	<security:filter-chain pattern="/account*" filters=" -->
-<!--           securityContextPersistenceFilter, -->
-<!--           logoutFilter, -->
-<!--           usernamePasswordAuthenticationFilter, -->
-<!--           rememberMeAuthenticationFilter, -->
-<!--           anonymousAuthenticationFilter, -->
-<!--           exceptionTranslationFilter, -->
-<!--           filterSecurityInterceptor"/> -->
 </beans:beans>
