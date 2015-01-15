@@ -24,4 +24,8 @@ You can use this user to login (name / password): <code>admin / admin</code>
 		<a href="http://www.facebook.com/felipewom" target="_blank" title="Page on Facebook">Felipe Moura</a>
 		
 	</li>
+		<li>
+		<a href="http://javablogger.herokuapp.com/" target="_blank" title="Page on Heroku">Site online</a>
+		
+	</li>
 </ul>
